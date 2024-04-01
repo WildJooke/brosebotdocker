@@ -56,7 +56,7 @@ async def quote():
 @tasks.loop(hours=4) #Outage may cause a http 503 error causing the bot to not update pfp until restarted, add an exception to retry after an hour
 async def avatar():
     user = await bot.fetch_user(userID) #Brose discord ID
-    pfp = requests.get(user.avatar_url, stream=True)
+    pfp = requests.get(user.avatar.url, stream=True)
 
     image = Image.open(pfp.raw)
     if image.mode == 'RGBA':
