@@ -48,8 +48,8 @@ async def quote():
         if phrase == 0:
             chance = randint(1,30)
             if chance == 1:
-                await channel.send(content = "@everyone " + phrases[phrase], allowed_mentions=allowed_mentions)
-        await channel.send(phrases[phrase])
+                await message.channel.send(content = "@everyone " + phrases[phrase], allowed_mentions=allowed_mentions)
+        await message.channel.send(phrases[phrase])
         quote.change_interval(minutes=0)
     
 
@@ -93,7 +93,7 @@ async def on_message(message):
     #Using Regex to find the number of total mentions in a message while making sure that there is only 1 unique mention using message.mentions, with 4 or more total mentions
     if message.author != bot.user and len(message.mentions) == 1 and len(re.findall(r"[@]\w{18,19}", message.content)) > 3:
         #Copies the original message(including text), using the same number of mentions
-        await channel.send(message.content)
+        await message.channel.send(message.content)
 
 
 bot.run(botToken)
