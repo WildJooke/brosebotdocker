@@ -20,9 +20,9 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 allowed_mentions = discord.AllowedMentions(everyone = True)
 
 #Pulls environment variables from docker container for sensitive data
-designatedChannel = os.environ[CHANNEL_ID]
-userID = os.environ[USER_ID]
-botToken = os.environ[BOT_TOKEN]
+designatedChannel = os.environ['CHANNEL_ID']
+userID = os.environ['USER_ID']
+botToken = os.environ['BOT_TOKEN']
 
 phrases = ["In-house tonight?", "Man fuck you", "bruh", "yo dap me up for that", "ya peel me?", "na ur beat for that", "lick my nuts", 
 "half hour power", "I’m boutta morb", "HONK SHOOOOOO", "aye throw on Rxknephew", "^^^ thats beat", "y'all are beat", "bangball anyone?", 
@@ -43,7 +43,7 @@ async def quote():
         #print(current_time + " | Next quote in " + str(timer) + " seconds (" + str(quote.current_loop) +")")
         print(current_time + " | Next quote in " + str(timer//60) + " hours and " + str(timer%60) + " minutes")
     else:
-        channel = bot.get_channel(designatedChannel) #Set to the desired channel, current: Social in Team Jersey 701174432126861436
+        channel = bot.get_channel(int(designatedChannel)) #Set to the desired channel, current: Social in Team Jersey 701174432126861436
         phrase = randint(0,len(phrases)-1)
         if phrase == 0:
             chance = randint(1,30)
