@@ -20,9 +20,9 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 allowed_mentions = discord.AllowedMentions(everyone = True)
 
 #Pulls environment variables from docker container for sensitive data
-designatedChannel = os.environ['CHANNEL_ID']
-userID = os.environ['USER_ID']
-botToken = os.environ['BOT_TOKEN']
+designatedChannel = os.environ[CHANNEL_ID]
+userID = os.environ[USER_ID]
+botToken = os.environ[BOT_TOKEN]
 
 phrases = ["In-house tonight?", "Man fuck you", "bruh", "yo dap me up for that", "ya peel me?", "na ur beat for that", "lick my nuts", 
 "half hour power", "I’m boutta morb", "HONK SHOOOOOO", "aye throw on Rxknephew", "^^^ thats beat", "y'all are beat", "bangball anyone?", 
