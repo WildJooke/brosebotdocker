@@ -37,8 +37,8 @@ async def on_ready():
 @tasks.loop(hours=0) #Alternates setting the next loops delay and sending a message to ensure that logs are lined up with actual message times
 async def quote():
     if quote.current_loop % 2 == 0: #Ignores the first loop so that the timer matches with printout
-        timer = randint(1,10) #Randomizes time until next quote in minutes
-        quote.change_interval(seconds=timer) #Sets the time until the next quote
+        timer = randint(360,1440) #Randomizes time until next quote in minutes
+        quote.change_interval(minutes=timer) #Sets the time until the next quote
         current_time = datetime.now().strftime("%H:%M:%S")
         #print(current_time + " | Next quote in " + str(timer) + " seconds (" + str(quote.current_loop) +")")
         print(current_time + " | Next quote in " + str(timer//60) + " hours and " + str(timer%60) + " minutes")
