@@ -70,7 +70,10 @@ async def avatar():
         final_transparent_image = Image.merge('RGBA', (r2,g2,b2,a))
 
         final_transparent_image.save('inv_img.png')
-
+    elif image.mode == 'P':
+	image = image.convert('RGB')
+	inverted_image = PIL.ImageOps.invert(image)
+        inverted_image.save('inv_img.png')
     else:
         inverted_image = PIL.ImageOps.invert(image)
         inverted_image.save('inv_img.png')
